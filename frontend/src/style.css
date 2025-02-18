@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.rhap_container {
+  background-color: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+.rhap_progress-section {
+  margin-bottom: 0 !important;
+}
+
+.rhap_controls-section {
+  margin-top: 0 !important;
+}
+
+.rhap_progress-bar {
+  height: 4px !important;
+}
+
+.rhap_progress-indicator {
+  width: 12px !important;
+  height: 12px !important;
+  top: -4px !important;
+  background: #3b82f6 !important;
+}
+
+.rhap_progress-filled {
+  background-color: #3b82f6 !important;
+}
+
+.rhap_button-clear {
+  color: #4b5563 !important;
+}
+
+.rhap_volume-controls {
+  margin-left: 12px !important;
+}

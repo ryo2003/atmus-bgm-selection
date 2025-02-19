@@ -34,12 +34,15 @@ const ResultSection = ({ result }) => {
               </div>
               
               {mainTrack?.url ? (
-                <AudioPlayer
-                  src={mainTrack.url}
-                  customProgressBarSection={["CURRENT_TIME", "PROGRESS_BAR", "DURATION"]}
-                  customControlsSection={["MAIN_CONTROLS", "VOLUME_CONTROLS"]}
-                  autoPlayAfterSrcChange={false}
-                />
+                <a href={mainTrack.url} target="_blank" rel="noopener noreferrer">
+                  <FiExternalLink className="text-2xl text-gray-600" />
+                </a>
+                // <AudioPlayer
+                //   src={mainTrack.url}
+                //   customProgressBarSection={["CURRENT_TIME", "PROGRESS_BAR", "DURATION"]}
+                //   customControlsSection={["MAIN_CONTROLS", "VOLUME_CONTROLS"]}
+                //   autoPlayAfterSrcChange={false}
+                // />
               ) : (
                 <p className="text-center text-gray-500">No track available.</p>
               )}
@@ -73,6 +76,9 @@ const ResultSection = ({ result }) => {
                       <div>
                         <h4 className="font-semibold">{track.title || "Untitled"}</h4>
                         <p className="text-gray-600">{track.artist || "Unknown Artist"}</p>
+                        <a href={mainTrack.url} target="_blank" rel="noopener noreferrer">
+                  <FiExternalLink className="text-2xl text-gray-600" />
+                </a>
                         <span className="inline-block mt-1 px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
                           {track.mood || "Unknown Mood"}
                         </span>

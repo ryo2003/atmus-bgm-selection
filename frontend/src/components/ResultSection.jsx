@@ -17,14 +17,14 @@ const ResultSection = ({ result }) => {
             <div className="bg-white rounded-lg p-6 shadow-sm">
               <div className="flex items-center justify-between mb-4">
                 <div>
-                  <h4 className="text-xl font-semibold">{mainTrack.title}</h4>
-                  <p className="text-gray-600">{mainTrack.artist}</p>
+                  <h4 className="text-xl font-semibold">{mainTrack?.title || "Generated Track"}</h4>
+                  <p className="text-gray-600">{mainTrack?.artist || "Unknown Artist"}</p>
                   <div className="flex gap-2 mt-2">
                     <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
-                      {mainTrack.mood}
+                      {mainTrack?.mood || "Unknown Mood"}
                     </span>
                     <span className="px-2 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">
-                      {mainTrack.genre}
+                      {mainTrack?.genre || "Unknown Genre"}
                     </span>
                   </div>
                 </div>
@@ -33,23 +33,19 @@ const ResultSection = ({ result }) => {
                 </button>
               </div>
               
-              <AudioPlayer
-                src={mainTrack.url}
-                customProgressBarSection={[
-                  "CURRENT_TIME",
-                  "PROGRESS_BAR",
-                  "DURATION",
-                ]}
-                customControlsSection={[
-                  "MAIN_CONTROLS",
-                  "VOLUME_CONTROLS",
-                ]}
-                autoPlayAfterSrcChange={false}
-              />
+              {mainTrack?.url ? (
+                <AudioPlayer
+                  src={mainTrack.url}
+                  customProgressBarSection={["CURRENT_TIME", "PROGRESS_BAR", "DURATION"]}
+                  customControlsSection={["MAIN_CONTROLS", "VOLUME_CONTROLS"]}
+                  autoPlayAfterSrcChange={false}
+                />
+              ) : (
+                <p className="text-center text-gray-500">No track available.</p>
+              )}
             </div>
           </div>
 
-          {/* Google Form Call-to-Action */}
           <div className="bg-blue-50 border-2 border-blue-100 rounded-lg p-6 mb-8 text-center">
             <h3 className="text-xl font-semibold text-blue-800 mb-2">{t('results.moreAccurate.title')}</h3>
             <p className="text-blue-600 mb-4">{t('results.moreAccurate.subtitle')}</p>
@@ -67,25 +63,29 @@ const ResultSection = ({ result }) => {
           <div>
             <h3 className="text-2xl font-bold mb-4">{t('results.similarTracks')}</h3>
             <div className="grid gap-4">
-              {recommendations.map((track, index) => (
-                <div key={index} className="bg-white rounded-lg p-4 shadow-sm flex items-center justify-between">
-                  <div className="flex items-center gap-4">
-                    <div className="p-3 bg-gray-100 rounded-full">
-                      <FiMusic className="text-xl text-gray-600" />
+              {recommendations?.length > 0 ? (
+                recommendations.map((track, index) => (
+                  <div key={index} className="bg-white rounded-lg p-4 shadow-sm flex items-center justify-between">
+                    <div className="flex items-center gap-4">
+                      <div className="p-3 bg-gray-100 rounded-full">
+                        <FiMusic className="text-xl text-gray-600" />
+                      </div>
+                      <div>
+                        <h4 className="font-semibold">{track.title || "Untitled"}</h4>
+                        <p className="text-gray-600">{track.artist || "Unknown Artist"}</p>
+                        <span className="inline-block mt-1 px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
+                          {track.mood || "Unknown Mood"}
+                        </span>
+                      </div>
                     </div>
-                    <div>
-                      <h4 className="font-semibold">{track.title}</h4>
-                      <p className="text-gray-600">{track.artist}</p>
-                      <span className="inline-block mt-1 px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
-                        {track.mood}
-                      </span>
-                    </div>
+                    <button className="p-2 hover:bg-gray-100 rounded-full">
+                      <FiHeart className="text-xl text-gray-600" />
+                    </button>
                   </div>
-                  <button className="p-2 hover:bg-gray-100 rounded-full">
-                    <FiHeart className="text-xl text-gray-600" />
-                  </button>
-                </div>
-              ))}
+                ))
+              ) : (
+                <p className="text-center text-gray-500">No recommendations available.</p>
+              )}
             </div>
           </div>
         </div>

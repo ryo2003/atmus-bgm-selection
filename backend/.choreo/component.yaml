@@ -1,8 +1,11 @@
-version: 0.1
+schemaVersion: 1.1
 
 endpoints:
   - name: "REST API"
-    port: 8000
     type: REST
     networkVisibility: Public
-    context: /api
+    service:
+      # +optional Context (base path) of the API that gets exposed via the endpoint.
+      basePath: /api
+      # +required Numeric port value that gets exposed via the endpoint
+      port: 8000

@@ -8,6 +8,8 @@ import Footer from './components/Footer';
 import './style.css';
 import imageCompression from 'browser-image-compression';
 
+const apiUrl = window?.configs?.apiUrl ? window.configs.apiUrl : "/";
+
 
 function App() {
   const [analysisResult, setAnalysisResult] = useState(null);
@@ -34,10 +36,9 @@ function App() {
   
       console.log("Submitting:", { text: description, image: base64Image ? "Yes" : "No" });
 
-      const apiUrl = "/choreo-apis/atmus/backend/v1" 
-      const devUrl  = "http://127.0.0.1:8000/api/suggest-music/"
+
   
-      const response = await fetch("/choreo-apis/atmus/backend/v1/api/suggest-music/", {
+      const response = await fetch(apiUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

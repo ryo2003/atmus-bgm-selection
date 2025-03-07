@@ -8,7 +8,7 @@ import Footer from './components/Footer';
 import './style.css';
 import imageCompression from 'browser-image-compression';
 
-const apiUrl = "7eb2b79b-b774-4746-beaf-d08eab4bf315-dev.e1-us-east-azure.choreoapis.dev/atmus/backend/v1.0"
+const apiUrl = "https://7eb2b79b-b774-4746-beaf-d08eab4bf315-dev.e1-us-east-azure.choreoapis.dev/atmus/backend/v1.0"
 
 
 function App() {

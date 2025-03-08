@@ -4,7 +4,7 @@ import App from './App'
 import { LanguageProvider } from './contexts/LanguageContext'
 
 window.configs = {
-  apiUrl: '/choreo-apis/atmus/backend/v1/api/suggest-music/',        
+  apiUrl: 'https://7eb2b79b-b774-4746-beaf-d08eab4bf315-dev.e1-us-east-azure.choreoapis.dev/atmus/backend/v1.0/api/suggest-music',        
 };
 
 ReactDOM.createRoot(document.getElementById('root')).render(

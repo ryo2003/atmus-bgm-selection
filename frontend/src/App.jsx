@@ -13,6 +13,8 @@ function App() {
   const [analysisResult, setAnalysisResult] = useState(null);
   const [isProcessing, setIsProcessing] = useState(false);
 
+  const apiUrl = window?.configs?.apiUrl ? window.configs.apiUrl : '/';
+
   const handleAnalysis = async (image, description) => {
     console.log("clicked");
     setIsProcessing(true);
@@ -34,7 +36,7 @@ function App() {
   
       console.log("Submitting:", { text: description, image: base64Image ? "Yes" : "No" });
   
-      const response = await fetch("http://127.0.0.1:8000/api/suggest-music/", {
+      const response = await fetch(apiUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
